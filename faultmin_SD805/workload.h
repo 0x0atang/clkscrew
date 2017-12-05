@@ -1,0 +1,68 @@
+#ifndef _WORKLOAD_H
+#define _WORKLOAD_H
+
+//
+// Extracted from TZOS firmware: 0xFE868B20
+// Firmware version: shamu 6.0.1 (MOB31S, Jan 2017)
+// https://dl.google.com/dl/android/aosp/shamu-mob31s-factory-c73a35ef.zip
+//
+static const char code__flip_endianness[] =
+  "\xD3\x17\x70\xB5\x02\xEB\x93\x72\x00\x24\x96\x10\x23\x46\x12\xE0"
+  "\x00\x22\x02\xEB\x83\x05\x52\x1C\x4D\x5D\x25\x43\x2C\x02\x03\x2A"
+  "\xF7\xDB\xF5\x1A\x02\xEB\x83\x02\x00\xEB\x85\x05\x8A\x5C\x22\x43"
+  "\x5B\x1C\x45\xF8\x04\x2C\xB3\x42\xEA\xDB\x70\xBD";
+
+
+// Reference source data
+static const u32 ref_modulus_orig[] =
+{
+  0xa777511b, 0x670f9a53, 0x27b85d8c, 0x6bb68174,
+  0x1cc94b9c, 0x726a2a9c, 0x3f080267, 0x435a8112,
+  0x3e3b5718, 0xf2e57cc7, 0x8d8d607a, 0xd6c91f49,
+  0x59c39367, 0x099b4add, 0x03c73ebc, 0xf0d118fb,
+  0xe44851ac, 0x168d3643, 0xeb59a2fd, 0x566855e2,
+  0xe80054bd, 0x384ac25e, 0x8a63e6e3, 0x7bbb1732,
+  0xe5d3a474, 0xf7e54233, 0x530ef3fc, 0xddf105c1,
+  0x3af35a64, 0x02202176, 0x63e85551, 0xe74b4884,
+  0x4c84b476, 0x31ba1ed9, 0xd183e16f, 0x764df691,
+  0x87915fdf, 0x7d445288, 0xbb042b91, 0x9ed0ebc6,
+  0x6215cec5, 0xe711b372, 0x1f5c64e8, 0x13d1e059,
+  0xe4a8f5ca, 0xe8fb4c3a, 0x524da6c1, 0x322eb7eb,
+  0x1d8211e2, 0x5420f123, 0xd03631b2, 0x3e84d8c5,
+  0x9c045efe, 0x6893df4d, 0x3d1d2b4d, 0x0284766b,
+  0xaa1811fa, 0xf858925b, 0xede482ce, 0xf4c646a5,
+  0xa62dd13d, 0x1a0b8545, 0xf6682a26, 0xc44dc735,
+};
+static const u32 ref_modulus_rev[] =
+{
+  0x35c74dc4, 0x262a68f6, 0x45850b1a, 0x3dd12da6,
+  0xa546c6f4, 0xce82e4ed, 0x5b9258f8, 0xfa1118aa,
+  0x6b768402, 0x4d2b1d3d, 0x4ddf9368, 0xfe5e049c,
+  0xc5d8843e, 0xb23136d0, 0x23f12054, 0xe211821d,
+  0xebb72e32, 0xc1a64d52, 0x3a4cfbe8, 0xcaf5a8e4,
+  0x59e0d113, 0xe8645c1f, 0x72b311e7, 0xc5ce1562,
+  0xc6ebd09e, 0x912b04bb, 0x8852447d, 0xdf5f9187,
+  0x91f64d76, 0x6fe183d1, 0xd91eba31, 0x76b4844c,
+  0x84484be7, 0x5155e863, 0x76212002, 0x645af33a,
+  0xc105f1dd, 0xfcf30e53, 0x3342e5f7, 0x74a4d3e5,
+  0x3217bb7b, 0xe3e6638a, 0x5ec24a38, 0xbd5400e8,
+  0xe2556856, 0xfda259eb, 0x43368d16, 0xac5148e4,
+  0xfb18d1f0, 0xbc3ec703, 0xdd4a9b09, 0x6793c359,
+  0x491fc9d6, 0x7a608d8d, 0xc77ce5f2, 0x18573b3e,
+  0x12815a43, 0x6702083f, 0x9c2a6a72, 0x9c4bc91c,
+  0x7481b66b, 0x8c5db827, 0x539a0f67, 0x1b5177a7,
+};
+
+
+// Length of test buffer
+#define BUFLEN_FLIPENDIAN       0x100
+
+// Slave to wait for a while before running workload
+#define WORKLOAD_PREDELAY       1500
+
+// Workload timing constants
+#define WORKLOAD_PREMUTEX       150000
+#define WORKLOAD_POSTDELAY      200000
+
+
+#endif // _WORKLOAD_H
